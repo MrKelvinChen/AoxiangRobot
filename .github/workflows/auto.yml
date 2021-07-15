@@ -29,7 +29,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Auto Filling
       run: |
-        python -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} yqtb
+        python aoxiangRobot -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} yqtb
     - name: update status
       run: |
         echo 'commit successful' >status
