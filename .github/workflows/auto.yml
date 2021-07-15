@@ -30,7 +30,7 @@ jobs:
       run: |
         python -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} yqtb
     - name: update status
-      runs: |
+      run: |
         echo 'commit successful' >status
     - name: commit
       id: commit
