@@ -14,7 +14,7 @@ def grade(**kwargs):
     from src.grade import Grade
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     g = Grade(username=username, password=password)
 
@@ -32,7 +32,7 @@ def exam(**kwargs):
     from src.exam import Exam
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     e = Exam(username=username, password=password)
     e.output(*kwargs['term'])
@@ -46,7 +46,7 @@ def courses(**kwargs):
     from src.classTable import ClassTable
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     e = ClassTable(username=username, password=password)
     e.output(kwargs['term'])
@@ -61,7 +61,7 @@ def me(**kwargs):
     from QingQiz.netreq.aoxiang import Aoxiang
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     console = Console()
 
@@ -104,7 +104,7 @@ def classTable(**kwargs):
             log.e('Abort.')
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     ct = ClassTable(username=username, password=password)
     ct.export(kwargs['start'], kwargs['end'], **kwargs)
@@ -121,7 +121,7 @@ def yqtb(**kwargs):
     from QingQiz.netreq.aoxiang import Aoxiang
 
     username = kwargs['username']
-    password = open(kwargs['password']).read().strip()
+    password = kwargs['password']
 
     res = Aoxiang(username, password).yqtb(location=kwargs['location'])
 
@@ -140,7 +140,7 @@ def yqtb(**kwargs):
 if __name__ == '__main__':
     parser = argh.ArghParser()
     parser.add_argument('-u', '--username', required=True, help='username')
-    parser.add_argument('-p', '--password', required=True, help='password FILE path')
+    parser.add_argument('-p', '--password', required=True, help='password')
 
     parser.add_commands([grade, exam, courses, classTable, me, yqtb])
 
