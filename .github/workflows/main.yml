@@ -35,7 +35,7 @@ jobs:
         git config --global user.email kelvinchen45ms@gmail.com
         git config --global user.name autofill_bot
         git add .
-        git commit -m "update readme content"
+        git commit -m "update status successful"
       continue-on-error: true
     - name: Check on failures
       if: steps.commit.outputs.status == 'failure'
