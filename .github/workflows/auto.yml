@@ -29,6 +29,9 @@ jobs:
     - name: Auto Filling
       run: |
         python -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} yqtb
+    - name: update status
+      runs: |
+        echo 'commit successful' >status
     - name: commit
       id: commit
       run: |
