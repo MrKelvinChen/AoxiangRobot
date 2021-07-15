@@ -29,3 +29,18 @@ jobs:
     - name: Auto Filling
       run: |
         python -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} yqtb
+    - name: commit
+      id: commit
+      run: |
+        git config --global user.email kelvinchen45ms@gmail.com
+        git config --global user.name autofill_bot
+        git add .
+        git commit -m "update readme content"
+      continue-on-error: true
+    - name: Check on failures
+      if: steps.commit.outputs.status == 'failure'
+      run: exit 1
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
